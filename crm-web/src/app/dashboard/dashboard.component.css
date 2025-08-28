@@ -1,0 +1,21 @@
+.side-nav-contianer {
+  margin: 0 10px;
+  display: flex;
+  flex-direction: row;
+
+}
+
+.side-nav {
+  position: fixed;
+  top: 55px;
+  left: 0;
+  width: 15%;
+}
+
+.side-nav-content {
+    top: 55px;
+    width: 100%;
+}
+.anchor {
+    cursor: pointer;
+}

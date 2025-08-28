@@ -1,0 +1,15 @@
+<div class="full-height">
+    <mat-sidenav-container class="side-nav-contianer full-height">
+        <mat-sidenav opened mode="side" class="side-nav" >
+            <mat-list role="list">
+                <div class="anchor"><a routerLink="clients" routerLinkActive="active-link" ><mat-list-item role="listitem">Client Management</mat-list-item></a></div>
+                <div class="anchor"><a routerLink="roles" routerLinkActive="active-link"><mat-list-item role="listitem">Manage Roles</mat-list-item></a></div>
+                <div class="anchor"><a routerLink="permissions" routerLinkActive="active-link"><mat-list-item role="listitem">Manage Permissions</mat-list-item></a></div>
+                <div class="anchor"><a routerLink="tenants" routerLinkActive="active-link"><mat-list-item role="listitem">Tenant Management</mat-list-item></a></div>
+            </mat-list>
+        </mat-sidenav>
+        <mat-sidenav-content fxFlex="100%" class="side-nav-content">
+            <router-outlet></router-outlet>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+</div>

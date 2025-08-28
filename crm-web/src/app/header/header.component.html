@@ -1,0 +1,31 @@
+<mat-toolbar color="app-header" class="header app-header">
+  <!-- <button mat-icon-button (click)="onToggleSideNav()" fxHide fxShow.xs *ngIf="showDashboardMenu">
+    <mat-icon>menu</mat-icon>
+  </button> -->
+  <a routerLink="/">
+    <img src="../../assets/images/crm_logo.png" alt="CRM logo" [ngClass]="'logo'">
+  </a>
+  <div>
+    <ul fxLayout fxLayoutGap="20px">
+      <li *ngIf="!isAuthenticated">
+        <a routerLink="/login" [ngClass]="'text-tertiary'">Login</a>
+      </li>
+      <li *ngIf="isAuthenticated">
+        <p mat-button [matMenuTriggerFor]="userMenu" #matMenuTrigger="matMenuTrigger" (mouseenter)="matMenuTrigger.openMenu()"
+           [ngClass]="'user-menu-link'">
+          Welcome
+          <span class="user-name">{{name}}</span>
+          <ng-template #trimmedName><span [ngClass]="'user-name'">{{name| slice:0:16}}...</span></ng-template>
+        </p>
+        <mat-menu #userMenu="matMenu" xPosition="before">
+          <div (mouseleave)="matMenuTrigger.closeMenu()">
+            <a mat-menu-item>Dashboard</a>
+            <a mat-menu-item>My Profile</a>
+            <a mat-menu-item>Logout</a>
+          </div>
+        </mat-menu>
+      </li>
+    </ul>
+  </div>  
+</mat-toolbar>
+<mat-divider [ngClass]="'bg-primary'"></mat-divider>

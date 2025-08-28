@@ -1,0 +1,57 @@
+.app-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  width: 100%;
+  background: var(--bg-alt-tertiary);
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.logo {
+  width: 150px;
+  height: 50px;
+  margin-left: 20px;
+}
+
+.mobile-logo {
+  height: 40px;
+  margin: 5px;
+}
+
+ul {
+  list-style-type: none;
+  float: right;
+  padding: 0;
+  overflow: hidden;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+}
+
+li a:hover {
+  text-decoration: underline;
+  cursor: pointer;
+  color: var(--text-quaternary);
+}
+
+.user-menu {
+  cursor: pointer;
+}
+
+.user-name {
+  color: var(--text-quaternary);
+}
