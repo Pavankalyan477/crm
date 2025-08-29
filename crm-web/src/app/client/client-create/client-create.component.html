@@ -1,4 +1,7 @@
-<h2 mat-dialog-title class="text-center">Create Client</h2>
+<h2 mat-dialog-title class="text-center">
+  {{ data?.client ? 'Edit Client' : 'Create Client' }}
+</h2>
+
 <mat-dialog-content [formGroup]="clientForm">
   <div class="grid-container">
     <mat-form-field appearance="outline">
@@ -13,7 +16,20 @@
 
     <mat-form-field appearance="outline">
       <mat-label>Location Code</mat-label>
-      <input matInput formControlName="localCode" />
+      <mat-select formControlName="localCode">
+        <!-- Search input inside the dropdown -->
+        <mat-option>
+          <ngx-mat-select-search
+            [formControl]="localCodeFilterCtrl"
+            placeholderLabel="Search location code..."
+            noEntriesFoundLabel="'No codes found'">
+          </ngx-mat-select-search>
+        </mat-option>
+        <!-- Filtered list of location codes -->
+        <mat-option *ngFor="let code of filteredLocalCodes | async" [value]="code">
+          {{ code }}
+        </mat-option>
+      </mat-select>
     </mat-form-field>
 
     <mat-form-field appearance="outline">
@@ -35,6 +51,6 @@
 <mat-dialog-actions align="end">
   <button mat-button (click)="cancel()">Cancel</button>
   <button mat-raised-button color="primary" (click)="submit()" [disabled]="clientForm.invalid">
-    Create
+    {{ data?.client ? 'Save' : 'Create' }}
   </button>
 </mat-dialog-actions>

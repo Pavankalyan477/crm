@@ -1,15 +1,14 @@
+import { Component, Inject, OnInit, OnDestroy } from '@angular/core';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, FormControl } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
-import {
-  MAT_DIALOG_DATA,
-  MatDialogModule,
-  MatDialogRef
-} from '@angular/material/dialog';
+import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
+import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
+import { ReplaySubject, Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-client-create',
@@ -21,15 +20,19 @@ import { MatButtonModule } from '@angular/material/button';
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
-    MatButtonModule
+    MatButtonModule,
+    NgxMatSelectSearchModule
   ],
   templateUrl: './client-create.component.html',
   styleUrls: ['./client-create.component.css']
 })
-export class ClientCreateComponent implements OnInit {
+export class ClientCreateComponent implements OnInit, OnDestroy {
   clientForm!: FormGroup;
-
-  rolesList: string[] = ['Admin', 'User', 'Viewer'];
+  rolesList = ['Admin', 'User', 'Viewer'];
+  localCodes = ['LOC001', 'LOC002', 'LOC003', 'LOC004'];
+  localCodeFilterCtrl = new FormControl();
+  filteredLocalCodes = new ReplaySubject<string[]>(1);
+  private _onDestroy = new Subject<void>();
 
   constructor(
     private fb: FormBuilder,
@@ -43,12 +46,29 @@ export class ClientCreateComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       localCode: ['', Validators.required],
       contact: ['', Validators.required],
-      roles: [[], Validators.required]
+      roles: [[], Validators.required],
     });
 
     if (this.data?.client) {
       this.clientForm.patchValue(this.data.client);
     }
+
+    this.filteredLocalCodes.next(this.localCodes.slice());
+
+    this.localCodeFilterCtrl.valueChanges
+      .pipe(takeUntil(this._onDestroy))
+      .subscribe(search => this.filterLocalCodes(search));
+  }
+
+  private filterLocalCodes(search: string) {
+    if (!search) {
+      this.filteredLocalCodes.next(this.localCodes.slice());
+      return;
+    }
+    const filter = search.toLowerCase();
+    this.filteredLocalCodes.next(
+      this.localCodes.filter(code => code.toLowerCase().includes(filter))
+    );
   }
 
   submit(): void {
@@ -59,5 +79,10 @@ export class ClientCreateComponent implements OnInit {
 
   cancel(): void {
     this.dialogRef.close();
+  }
+
+  ngOnDestroy(): void {
+    this._onDestroy.next();
+    this._onDestroy.complete();
   }
 }

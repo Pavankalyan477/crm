@@ -13,5 +13,5 @@ import { RouterOutlet } from '@angular/router';
 })
 export class HeaderComponent {
   isAuthenticated: boolean = true;
-  name: string = "Pavan Kalyan"
+  name: string = "Admin";
 }
