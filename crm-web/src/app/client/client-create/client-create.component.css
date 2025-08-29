@@ -1,0 +1,13 @@
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 16px;
+}
+
+.full-span {
+  grid-column: 1 / -1; /* Span both columns to center a lone field */
+}
+
+.text-center {
+    text-align: center;
+}

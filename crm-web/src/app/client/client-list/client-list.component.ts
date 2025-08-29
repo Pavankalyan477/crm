@@ -8,12 +8,32 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
+import {
+  MatDialog,
+  MAT_DIALOG_DATA,
+  MatDialogRef,
+  MatDialogTitle,
+  MatDialogContent,
+  MatDialogActions,
+  MatDialogClose,
+  MatDialogModule,
+} from '@angular/material/dialog';
+import { ClientCreateComponent } from '../client-create/client-create.component';
 
 
 @Component({
   selector: 'app-client-list',
   standalone: true,
-  imports: [CommonModule, MatCardModule, MatButtonModule, MatExpansionModule, MatInputModule, MatFormFieldModule,MatPaginatorModule, MatTableModule, MatIconModule],
+  imports: [CommonModule,
+    MatCardModule,
+    MatButtonModule,
+    MatExpansionModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatPaginatorModule,
+    MatTableModule,
+    MatIconModule,
+    MatDialogModule],
   templateUrl: './client-list.component.html',
   styleUrl: './client-list.component.css'
 })
@@ -24,8 +44,26 @@ export class ClientListComponent {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
+  constructor(public dialog: MatDialog) {}
+
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
+  }
+
+  openCreateClient(): void {
+    const dialogRef = this.dialog.open(ClientCreateComponent, {
+      width: '400px',
+      disableClose: true,
+      data: {}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        console.log('Client created:', result);
+      } else {
+        console.log('Dialog closed without submission');
+      }
+    });
   }
 }
 

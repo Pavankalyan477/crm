@@ -1,1 +1,40 @@
-<p>client-create works!</p>
+<h2 mat-dialog-title class="text-center">Create Client</h2>
+<mat-dialog-content [formGroup]="clientForm">
+  <div class="grid-container">
+    <mat-form-field appearance="outline">
+      <mat-label>Client Name</mat-label>
+      <input matInput formControlName="name" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Client Email</mat-label>
+      <input matInput formControlName="email" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Location Code</mat-label>
+      <input matInput formControlName="localCode" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Contact</mat-label>
+      <input matInput formControlName="contact" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-span">
+      <mat-label>Assign Roles</mat-label>
+      <mat-select formControlName="roles" multiple>
+        <mat-option *ngFor="let role of rolesList" [value]="role">
+          {{ role }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="cancel()">Cancel</button>
+  <button mat-raised-button color="primary" (click)="submit()" [disabled]="clientForm.invalid">
+    Create
+  </button>
+</mat-dialog-actions>
