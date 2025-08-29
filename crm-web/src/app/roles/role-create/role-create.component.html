@@ -1,1 +1,20 @@
-<p>role-create works!</p>
+<div class="container">
+    <h2 mat-dialog-title class="text-center">Create Role</h2>
+
+    <mat-dialog-content [formGroup]="roleForm" class="p-t-b-10">
+        <mat-form-field appearance="outline" style="display:block;">
+            <mat-label>Role Name</mat-label>
+            <input matInput formControlName="roleName" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" style="display:block;">
+            <mat-label>Role Description</mat-label>
+            <textarea matInput formControlName="roleDescription"></textarea>
+        </mat-form-field>
+    </mat-dialog-content>
+
+    <mat-dialog-actions align="end">
+        <button mat-button (click)="cancel()">Cancel</button>
+        <button mat-raised-button color="primary" (click)="submit()" [disabled]="roleForm.invalid">Create</button>
+    </mat-dialog-actions>
+</div>

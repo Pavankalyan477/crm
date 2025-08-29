@@ -8,6 +8,3 @@
   grid-column: 1 / -1; /* Span both columns to center a lone field */
 }
 
-.text-center {
-    text-align: center;
-}
