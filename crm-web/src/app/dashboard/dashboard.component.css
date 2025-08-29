@@ -17,8 +17,9 @@
     top: 55px;
     width: 100%;
 }
-.anchor:hover {
-    cursor: pointer;
+a {
+  cursor: pointer;
+  text-decoration: none;
 }
 
 .w-100 {
