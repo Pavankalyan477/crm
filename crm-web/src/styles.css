@@ -6,3 +6,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .full-height { 
     height: 100%;
 }
+
+.text-center {
+    text-align: center;
+}
+
+.p-t-b-10 {
+    padding: 10px 0 !important;
+}
