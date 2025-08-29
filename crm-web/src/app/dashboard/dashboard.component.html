@@ -1,11 +1,15 @@
 <div class="full-height">
     <mat-sidenav-container class="side-nav-contianer full-height">
-        <mat-sidenav opened mode="side" class="side-nav" >
-            <mat-list>
-                <div class="anchor"><a routerLink="clients" routerLinkActive="active-link" ><mat-list-item role="listitem">Client Management</mat-list-item></a></div>
-                <div class="anchor"><a routerLink="roles" routerLinkActive="active-link"><mat-list-item role="listitem">Manage Roles</mat-list-item></a></div>
-                <div class="anchor"><a routerLink="permissions" routerLinkActive="active-link"><mat-list-item role="listitem">Manage Permissions</mat-list-item></a></div>
-                <div class="anchor"><a routerLink="tenants" routerLinkActive="active-link"><mat-list-item role="listitem">Tenant Management</mat-list-item></a></div>
+        <mat-sidenav opened mode="side" class="side-nav">
+            <mat-list role="list" class="mat-list">
+                <button class="w-100" class="list-item" routerLink="roles" routerLinkActive="active-link" mat-stroked-button><mat-list-item
+                        role="listitem" class="list-item">Client
+                        Management</mat-list-item></button>
+                <button class="w-100" class="list-item" mat-stroked-button color="primary"><mat-list-item role="listitem" class="list-item">Manage
+                        Roles</mat-list-item></button>
+                <button class="w-100" class="list-item" mat-stroked-button color="accent"><mat-list-item role="listitem" class="list-item">Manage
+                        Permissions</mat-list-item></button>
+
             </mat-list>
         </mat-sidenav>
         <mat-sidenav-content fxFlex="100%" class="side-nav-content">

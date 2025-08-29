@@ -10,6 +10,7 @@
   top: 55px;
   left: 0;
   width: 15%;
+  padding: 0 10px;
 }
 
 .side-nav-content {
@@ -19,4 +20,18 @@
 a {
   cursor: pointer;
   text-decoration: none;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.mat-list {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.list-item {
+  cursor: pointer !important;
 }
