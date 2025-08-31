@@ -1,0 +1,34 @@
+<mat-card style="padding: 20px;">
+    <h2 mat-dialog-title class="text-center">
+        LOGIN
+    </h2>
+
+    <mat-dialog-content>
+        <div class="grid-container">
+
+            <mat-form-field appearance="outline">
+                <mat-label>Client Email</mat-label>
+                <input matInput />
+            </mat-form-field>
+
+
+            <mat-form-field appearance="outline">
+                <mat-label>Enter your password</mat-label>
+                <input matInput [type]="hide ? 'password' : 'text'">
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                    [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+            </mat-form-field>
+
+        </div>
+    </mat-dialog-content>
+
+    <mat-dialog-actions >
+        <div style="text-align: end;">
+            <button mat-raised-button color="primary">
+            Login
+        </button>
+        </div>
+    </mat-dialog-actions>
+</mat-card>
