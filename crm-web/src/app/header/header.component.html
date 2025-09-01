@@ -7,9 +7,9 @@
   </a>
   <div>
     <ul fxLayout fxLayoutGap="20px">
-      <li *ngIf="!isAuthenticated">
+      <!-- <li *ngIf="!isAuthenticated">
         <a routerLink="/login" [ngClass]="'text-tertiary'">Login</a>
-      </li>
+      </li> -->
       <li *ngIf="isAuthenticated">
         <p mat-button [matMenuTriggerFor]="userMenu" #matMenuTrigger="matMenuTrigger" (mouseenter)="matMenuTrigger.openMenu()"
            [ngClass]="'user-menu-link'">

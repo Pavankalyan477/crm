@@ -5,6 +5,7 @@ import { ClientListComponent } from './client/client-list/client-list.component'
 import { RolesListComponent } from './roles/roles-list/roles-list.component';
 import { PermissionsListComponent } from './permissions/permissions-list/permissions-list.component';
 import { TenantsListComponent } from './tenants/tenants-list/tenants-list.component';
+import { AuthComponent } from './auth/auth/auth.component';
 
 const dashboardChildren: Routes = [
   { path: '', pathMatch: 'prefix', redirectTo: 'clients' },
@@ -16,6 +17,7 @@ const dashboardChildren: Routes = [
 
 const mainComponentChildren: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'dashboard' },
+  { path: 'login', component: AuthComponent },
   { path: 'dashboard', component: DashboardComponent, children: dashboardChildren }
 ];
 
